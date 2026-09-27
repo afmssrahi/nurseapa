@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Nurse Apa logo">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a3a82"/>
+      <stop offset="100%" stop-color="#1f5dbf"/>
+    </linearGradient>
+  </defs>
+  <circle cx="32" cy="32" r="30" fill="url(#g)"/>
+  <circle cx="32" cy="32" r="22" fill="none" stroke="#ffffff" stroke-width="2" opacity=".4"/>
+  <!-- heart with medical cross -->
+  <path d="M32 50s-14-9-14-21a8 8 0 0 1 14-5 8 8 0 0 1 14 5c0 12-14 21-14 21z" fill="#ffffff"/>
+  <rect x="30" y="24" width="4" height="12" fill="#0a3a82"/>
+  <rect x="26" y="28" width="12" height="4" fill="#0a3a82"/>
+</svg>
