@@ -88,35 +88,15 @@ p { margin: 0 0 1em; }
   position: sticky;
   top: 0;
   z-index: 60;
+  /* Solid white always — never toggle this on scroll, it looks jumpy. */
   background: #ffffff;
   border-bottom: 1px solid var(--c-line);
-  /* Solid white by default so the header is never visually lost, even before
-     the page scrolls (avoids the "header disappears while scrolling past hero
-     gradients" issue users reported). */
 }
-/* On capable browsers, layer a subtle frosted-glass effect over the white */
-@supports (backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px)) {
-  .site-header {
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: saturate(180%) blur(12px);
-    -webkit-backdrop-filter: saturate(180%) blur(12px);
-  }
-}
-/* When JS marks the header as stuck (page scrolled past 4px), make the
-   separation from the content underneath unmistakable: opaque white background,
-   soft shadow, and a thin brand-color underline. */
+/* When the page scrolls past 4px, JS adds `.is-stuck`. We only change the
+   *shadow* and *border*, not the background — the header stays a clean
+   solid white bar throughout the page lifecycle. */
 .site-header.is-stuck {
-  background: #ffffff;
-  box-shadow: 0 8px 22px rgba(10, 58, 130, 0.10);
-  border-bottom-color: transparent;
-}
-.site-header.is-stuck::after {
-  content: "";
-  position: absolute;
-  inset: auto 0 -1px 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--c-primary-50) 30%, var(--c-primary-50) 70%, transparent);
-}
+  box-shadow: 0 6px 20px rgba(10, 58, 130, 0.08);
 }
 .header-inner {
   display: flex; align-items: center; justify-content: space-between;
@@ -549,12 +529,12 @@ html, body { overflow-x: clip; }
   .footer-grid { grid-template-columns: 1.4fr 1fr 1fr 1.2fr; }
   .section-head-row { flex-direction: row; align-items: end; }
   /* More breathing room in the desktop header */
-  .header-inner { padding: 1.35rem 1.5rem; gap: 1.25rem; }
-  .brand-text strong { font-size: 1.15rem; }
-  .brand img { width: 50px; height: 50px; }
-  .header-actions { gap: .8rem; }
-  .lang-toggle { padding: .55rem .95rem; font-size: .9rem; }
-  .btn-call { padding: .85rem 1.3rem; font-size: .98rem; }
+  .header-inner { padding: 1rem 1.5rem; gap: 1.25rem; }
+  .brand-text strong { font-size: 1.08rem; }
+  .brand img { width: 42px; height: 42px; }
+  .header-actions { gap: .75rem; }
+  .lang-toggle { padding: .5rem .85rem; font-size: .88rem; }
+  .btn-call { padding: .7rem 1.15rem; font-size: .92rem; }
   .cta-inner { flex-direction: row; text-align: left; }
   .srv-row { grid-template-columns: 96px 1fr; padding: 1.75rem; gap: 1.5rem; }
   .srv-row h2 { font-size: 1.5rem; }
@@ -567,11 +547,11 @@ html, body { overflow-x: clip; }
 /* ---------- ≥ 1100px (large desktop) ---------- */
 @media (min-width: 1100px) {
   .container { padding: 0 2rem; }
-  .header-inner { padding: 1.6rem 2rem; gap: 1.5rem; }
-  .brand img { width: 54px; height: 54px; }
-  .brand-text strong { font-size: 1.2rem; }
-  .lang-toggle { padding: .6rem 1rem; font-size: .95rem; }
-  .btn-call { padding: .9rem 1.4rem; font-size: 1rem; }
+  .header-inner { padding: 1.1rem 2rem; gap: 1.5rem; }
+  .brand img { width: 46px; height: 46px; }
+  .brand-text strong { font-size: 1.12rem; }
+  .lang-toggle { padding: .55rem .95rem; font-size: .9rem; }
+  .btn-call { padding: .75rem 1.25rem; font-size: .95rem; }
 }
 
 /* safe-area for notched phones */
